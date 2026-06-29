@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Python
+ai-service/venv/
+ai-service/__pycache__/
+*.pyc
+
+# İşletim Sistemi Çöpleri
+.DS_Store

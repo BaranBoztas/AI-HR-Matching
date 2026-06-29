@@ -1,0 +1,72 @@
+.navbar {
+  background-color: var(--bg-dark);
+  border-bottom: 1px solid var(--bg-medium);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+  transition: opacity 0.2s ease;
+}
+
+.navbar-logo:hover {
+  opacity: 0.9;
+}
+
+.logo-icon {
+  color: var(--accent-red);
+  filter: drop-shadow(0 0 8px rgba(255, 59, 48, 0.5));
+}
+
+.logo-text {
+  letter-spacing: -0.5px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.btn-signin {
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.2s ease;
+}
+
+.btn-signin:hover {
+  color: var(--accent-red);
+}
+
+.btn-signup {
+  background-color: var(--accent-red);
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(255, 59, 48, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-signup:hover {
+  background-color: var(--accent-crimson);
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.5);
+  transform: translateY(-1px);
+}
