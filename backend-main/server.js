@@ -8,6 +8,7 @@ import jobRoutes from "./routes/jobRoutes.js";
 import matchingRoutes from "./routes/matchingRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js";
 
 // .env dosyasındaki değişkenleri yüklüyoruz
 dotenv.config();
@@ -25,6 +26,7 @@ app.use("/api/jobs", jobRoutes);
 app.use("/api/matches", matchingRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 // İlk Test Rotası
 app.get("/", (req, res) => {

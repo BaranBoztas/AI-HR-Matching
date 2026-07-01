@@ -12,7 +12,7 @@ const AppLayout = () => {
 
   return (
     <div className="app-container">
-      {!isDashboard && <Navbar />}
+      <Navbar />
       <main className={isDashboard ? "dashboard-main" : "main-content"}>
         <Routes>
           <Route

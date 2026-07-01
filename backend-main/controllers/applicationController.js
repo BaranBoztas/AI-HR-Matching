@@ -34,6 +34,22 @@ export const applyForJob = async (req, res) => {
       throw insertError;
     }
 
+    // Şirkete bildirim gönder
+    const { data: jobData } = await supabaseAdmin
+      .from('job_postings')
+      .select('company_id, title')
+      .eq('id', job_id)
+      .single();
+
+    if (jobData && jobData.company_id) {
+      await supabaseAdmin.from('notifications').insert({
+        user_id: jobData.company_id,
+        type: 'application_received',
+        message: `"${jobData.title}" ilanınıza yeni bir başvuru yapıldı.`,
+        reference_id: job_id
+      });
+    }
+
     return res.status(201).json({ message: 'Başvurunuz başarıyla alındı.' });
   } catch (error) {
     console.error('Başvuru Hatası:', error);
@@ -318,7 +334,7 @@ export const makeOfferToCandidate = async (req, res) => {
     // Security: Does this job posting really belong to this company?
     const { data: jobData, error: jobErr } = await supabaseAdmin
       .from('job_postings')
-      .select('company_id')
+      .select('company_id, title')
       .eq('id', job_id)
       .single();
 
@@ -341,6 +357,14 @@ export const makeOfferToCandidate = async (req, res) => {
       }
       throw insertError;
     }
+
+    // Adaya bildirim gönder
+    await supabaseAdmin.from('notifications').insert({
+      user_id: candidate_id,
+      type: 'offer_received',
+      message: `"${jobData.title}" pozisyonu için yeni bir teklif aldınız.`,
+      reference_id: job_id
+    });
 
     return res.status(201).json({ message: 'Teklif adaya başarıyla iletildi.' });
   } catch (error) {
